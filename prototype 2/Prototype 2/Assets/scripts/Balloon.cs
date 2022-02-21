@@ -11,6 +11,7 @@ public class Balloon : MonoBehaviour
 
     public float scaleIncrease = 0.1f; //scale increase after each balloon is clicked
 
+    public ScoreManager scoreManager; //references the scoreManager script so it can be used here
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,7 @@ public class Balloon : MonoBehaviour
 
         if(clickToPop == 0)
         {
+            scoreManager.IncreaseScoreText(scoreToGive);
             Destroy(gameObject);
         }
     }
