@@ -1,5 +1,82 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1381578834
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1381578836}
+  - component: {fileID: 1381578835}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1381578836
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381578834}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.024788, y: -3.8610034, z: 5.79814}
+  m_LocalScale: {x: 1, y: 0.8159934, z: 1.2593032}
+  m_Children: []
+  m_Father: {fileID: 796771942502756050}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1381578835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381578834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea443ffe024f177408bdd08e9f384a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  friendNames:
+  - Bob
+  - Jessica
+  - Harley
+  - Jody
+  numbers: 170000002d00000038000000430000004e00000059000000
+  gems:
+  - Diamond
+  - Quartz
+  - Ruby
+  - Lapis Lazuli
+  oddNumbers: 01000000030000000500000007000000090000000b0000000d0000000f000000110000001300000015000000
+  evenNumbers: 020000000400000006000000080000000a0000000c0000000e000000100000001200000014000000
+  colors:
+  - red
+  - orange
+  - yellow
+  - green
+  - blue
+  - purple
+  - gray
+  - black
+  - white
+  goodSleep: 0700000008000000090000000a000000
+  badSleep: 0100000002000000030000000400000005000000060000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000
+  jewelry:
+  - bracelet
+  - necklace
+  - ring
+  - earring
+  catTypes:
+  - goblin
+  - normal
+  - fluffy
 --- !u!1 &1465154139347856294
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,6 +89,8 @@ GameObject:
   - component: {fileID: 656329182275399159}
   - component: {fileID: 851656277509568009}
   - component: {fileID: 1657444926677248675}
+  - component: {fileID: 188900077}
+  - component: {fileID: 188900082}
   m_Layer: 0
   m_Name: GreenBalloon
   m_TagString: Untagged
@@ -31,6 +110,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.2255, z: 0.79409}
   m_Children:
   - {fileID: 5454103464291679763}
+  - {fileID: 1381578836}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -96,6 +176,35 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &188900077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465154139347856294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e1dac1048e54dd4c8cea74d245b6eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreToGive: 100
+  clickToPop: 3
+  scaleIncrease: 0.1
+  scoreManager: {fileID: 0}
+--- !u!114 &188900082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465154139347856294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67485c7e0cb037540b10ea08607e0b36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
 --- !u!1 &1758483906262209286
 GameObject:
   m_ObjectHideFlags: 0
