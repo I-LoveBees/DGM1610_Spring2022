@@ -22,7 +22,7 @@ public class MoveAndShoot : MonoBehaviour
     }
 
     // Update is called once per frame
-    async void Update()
+    void Update()
     {
         if(Vector2.Distance(transform.position, target.position) > stopDistance)
         {
@@ -40,6 +40,7 @@ public class MoveAndShoot : MonoBehaviour
         if(shotDelay <= 0) 
         {
             Instantiate(projectile, transform.position, Quaternion.identity);
+            shotDelay = startDelay;
         }
         else
         {
