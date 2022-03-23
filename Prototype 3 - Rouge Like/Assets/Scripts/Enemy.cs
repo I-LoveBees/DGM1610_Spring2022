@@ -5,12 +5,13 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("Enemy Health")]
-    public int curHp; //current HP
+    public int curHP; //current HP
     public int maxHP;
 
     [Header("Enemy Attack")]
     public int damage;
     public float attackRate;
+    public float attackRange;
     private float lastAttackTime;
     public PlayerController player;
 
@@ -23,7 +24,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.time - lastAttackTime >= attackRate)
+        if(Time.time - lastAttackTime >= attackRate && Vector2.Distance(transform.position, player.transform.position) < attackRange)
         {
             Attack();
         }
@@ -31,9 +32,9 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        curHp -= damage;
+        curHP -= damage;
 
-        if(curHp <= 0)
+        if(curHP <= 0)
         {
             Death();
         }

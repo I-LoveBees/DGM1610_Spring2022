@@ -11,12 +11,13 @@ public class PlayerController : MonoBehaviour
     [Header ("Player Movement")]
     public float moveSpeed = 5f; //player speed
     private Rigidbody2D rb; //the 2d's rigidbody ref
-    Vector2 movement; //x and y position storage for movement
+    private Vector2 movement; //x and y position storage for movement
+    private Vector2 direction;
 
     [Header ("Player Combat")]
     public float attackRange;
     public float attackRate;
-    public float lastAttackTime;
+    private float lastAttackTime;
     public int damage;
     public LayerMask enemyLayer;
 
@@ -31,6 +32,12 @@ public class PlayerController : MonoBehaviour
     {
         movement.x = Input.GetAxis("Horizontal"); //left right move
         movement.y = Input.GetAxis("Vertical"); //up down move
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            if(Time.time - lastAttackTime >=attackRate)
+                Attack();
+        }
     }
 
 //set number of calls per frame. best for physics
@@ -38,6 +45,20 @@ public class PlayerController : MonoBehaviour
     {
         //apply physics and move character
         rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
+
+        UpdateDirection();
+    }
+
+    void UpdateDirection()
+    {
+        Vector2 vel = new Vector2(movement.x,movement.y); //vel is short for velocity
+
+        if(vel.magnitude != 0)
+        {
+            direction = vel;
+        }
+
+        rb.velocity = vel * moveSpeed; //makes the unity velocity equal vel
     }
 
     void Attack()
@@ -45,11 +66,21 @@ public class PlayerController : MonoBehaviour
         lastAttackTime = Time.time;
 
         //RayCast using the enemy Layer
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, facingDirection, attackRange, enemyLayer);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, attackRange, enemyLayer);
 
         if(hit.collider != null)
         {
             hit.collider.GetComponent<Enemy>()?.TakeDamage(damage);
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        curHP -= damage;
+
+        if(curHP <= 0)
+        {
+            Death();
         }
     }
 

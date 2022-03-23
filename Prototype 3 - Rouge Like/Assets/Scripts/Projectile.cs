@@ -5,6 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float speed;
+    public int damage;
     private Transform player;
     private Vector2 target; //last known position of player
 
@@ -31,6 +32,7 @@ public class Projectile : MonoBehaviour
         if(other.CompareTag("Player")) //projectile hitting player
         {
             DestroyProjectile();
+            player.TakeDamage(damage);
         }
     }
 
