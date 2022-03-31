@@ -8,12 +8,14 @@ public class Projectile : MonoBehaviour
     public int damage;
     private Transform player;
     private Vector2 target; //last known position of player
+    private PlayerController pc;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>(); //labels the player the player
         target = new Vector2(player.position.x, player.position.y);
+        pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -32,7 +34,7 @@ public class Projectile : MonoBehaviour
         if(other.CompareTag("Player")) //projectile hitting player
         {
             DestroyProjectile();
-            player.TakeDamage(damage);
+            pc.TakeDamage(damage);
         }
     }
 
