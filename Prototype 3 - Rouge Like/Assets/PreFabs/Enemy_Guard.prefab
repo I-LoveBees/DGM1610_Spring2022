@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6114545125052553395}
   - component: {fileID: 6114545125052553399}
   - component: {fileID: 6114545125052553398}
+  - component: {fileID: 3409769579183216639}
   m_Layer: 6
   m_Name: Enemy_Guard
   m_TagString: Untagged
@@ -102,7 +103,7 @@ MonoBehaviour:
   startPoint: {fileID: 0}
   minX: -10
   maxX: 10
-  minY: -3.4
+  minY: -2.67
   maxY: 3.4
 --- !u!58 &6114545125052553399
 CircleCollider2D:
@@ -141,3 +142,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3409769579183216639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6114545125052553394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 072fe4a0e5e392c4d884c2f1ecb6f52d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curHP: 5
+  maxHP: 5
+  damage: 2
+  attackRate: 1
+  attackRange: 2
+  player: {fileID: 0}
+  lootDrop: {fileID: 0}

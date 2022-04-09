@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
   [Header ("Player Health")]
     public int curHP;
     public int maxHP;
+    public HealthBar healthBar;
 
     [Header ("Player Movement")]
     public float moveSpeed = 5f; //player speed
@@ -21,10 +22,19 @@ public class PlayerController : MonoBehaviour
     public int damage;
     public LayerMask enemyLayer;
 
+    [Header("Inventory")]
+    public int key;
+    public int coins;
+    public int gems;
+
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        curHP = maxHP;
+        healthBar.SetHealth(maxHP); //sends max HP into the health bar slider (set health)
     }
 
     // Update is called once per frame
@@ -77,6 +87,7 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         curHP -= damage;
+        healthBar.SetHealth(curHP); //updates the heatlh bar using curHP
 
         if(curHP <= 0)
         {
