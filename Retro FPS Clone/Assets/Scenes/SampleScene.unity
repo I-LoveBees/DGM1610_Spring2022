@@ -764,7 +764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1577247709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -778,7 +778,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numEwoks: 20
+  numCats: 30
+  blankets: 7
+  phones: 3
+  halos: 6
   ducksInPond: 99
+  n: 0
+  m: 5
+  p: 3
+  q: 6
 --- !u!4 &1577247710
 Transform:
   m_ObjectHideFlags: 0
