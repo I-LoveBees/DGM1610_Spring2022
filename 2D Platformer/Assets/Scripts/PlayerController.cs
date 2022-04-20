@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void FixedUpdate() //gets called once per set number of times??
+    void Update() //gets called once per set number of times??
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround); //checks if you're touching a layer??? idk
 
