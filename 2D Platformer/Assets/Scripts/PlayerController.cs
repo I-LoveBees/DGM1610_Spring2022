@@ -16,12 +16,17 @@ public class PlayerController : MonoBehaviour
     public LayerMask whatIsGround;
 
     private float moveVelocity;
+    private AudioSource source; //audio
+    public AudioClip clip;
+
 
     // Start is called before the first frame update
     void Start()
     {
         isGrounded = true;
         rb = GetComponent<Rigidbody2D>();
+
+        source = GetComponent<AudioSource>();
     }
 
     void Update() //gets called once per set number of times??
@@ -53,5 +58,6 @@ public class PlayerController : MonoBehaviour
     public void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpHeight); //changing velocity on x, and maintaining velocity on y
+        source.PlayOneShot(clip, 1.0f); //play a sound when jumping
     }
 }
