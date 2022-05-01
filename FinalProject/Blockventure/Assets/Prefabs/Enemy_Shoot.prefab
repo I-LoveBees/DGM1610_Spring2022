@@ -104,7 +104,7 @@ MonoBehaviour:
   attackRate: 3
   attackRange: 5
   player: {fileID: 0}
-  lootDrop: {fileID: 0}
+  lootDrop: {fileID: 5484071406753082445, guid: 3a1b218ba30664d49994c036f6dfdb5f, type: 3}
 --- !u!114 &8228265524668041076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
   stopDistance: 3
   retreatDistance: 4
   startDelay: 2
-  projectile: {fileID: 0}
+  projectile: {fileID: 1316257568842522449, guid: 0a4d0b54312d120498b1f9a09e6a443a, type: 3}
 --- !u!61 &1150367588533878708
 BoxCollider2D:
   m_ObjectHideFlags: 0

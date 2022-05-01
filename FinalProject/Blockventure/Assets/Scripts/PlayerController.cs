@@ -98,10 +98,10 @@ public class PlayerController : MonoBehaviour
     public void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpHeight); //changing velocity on x, and maintaining velocity on y
-        source.PlayOneShot(clip, 1.0f); //play a sound when jumping
+     
     }
 
-    void Attack()
+    public void Attack()
     {
 
         lastAttackTime = Time.time;
@@ -127,6 +127,8 @@ public class PlayerController : MonoBehaviour
     {
         curHP -= damage;
         healthBar.SetHealth(curHP); //updates the heatlh bar using curHP
+
+        source.PlayOneShot(clip, 1.0f); //play a sound when getting hit
 
         if(curHP <= 0)
         {
