@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,7 +11,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private float moveVelocity;
     private Vector2 direction;
-    private SpriteRenderer _renderer;
 
     [Header("GroundCheck")]
     private bool isGrounded;
@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     private float lastAttackTime;
     public int damage;
     public LayerMask enemyLayer;
+    public GameObject bullet;
+
 
     [Header("Inventory")]
     public int key;
@@ -42,8 +44,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //sprite flip
-         _renderer = GetComponent<SpriteRenderer>();
         //ground
         isGrounded = true;
         rb = GetComponent<Rigidbody2D>();
@@ -56,16 +56,6 @@ public class PlayerController : MonoBehaviour
 
     void Update() //gets called once per frame
     {
-        //flipping sprite to see direction
-        if (Input.GetAxisRaw("Horizontal") > 0)
-        {
-            _renderer.flipX = false;
-        }
-        else if (Input.GetAxisRaw("Horizontal") < 0)
-        {
-            _renderer.flipX = true;
-        }
-
         //ground
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround); //checks if you're touching a layer??? idk
 
@@ -91,10 +81,17 @@ public class PlayerController : MonoBehaviour
         //moving player left and right 
         rb.velocity = new Vector2(moveVelocity,rb.velocity.y);
 
-        if(Input.GetKeyDown(KeyCode.K)) //attack (hopefully)
+        if(Input.GetKey(KeyCode.Space)) //attack (hopefully)
         {
+            
             if(Time.time - lastAttackTime >=attackRate)
+            {
                 Attack();
+
+            }
+           
+            
+           // Instantiate(bullet, transform.position, Quaternion.identity);
         }
     }
 
@@ -106,15 +103,24 @@ public class PlayerController : MonoBehaviour
 
     void Attack()
     {
+
         lastAttackTime = Time.time;
 
         //RayCast using the enemy Layer
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, attackRange, enemyLayer);
 
+        // not working
         if(hit.collider != null)
         {
             hit.collider.GetComponent<Enemy>()?.TakeDamage(damage);
+            Debug.Log("I am attacking");
+            //maybe i can shoot with this
+            Instantiate(bullet, transform.position, Quaternion.identity);
+
         }
+        
+
+
     }
 
     public void TakeDamage(int damage)
@@ -131,5 +137,6 @@ public class PlayerController : MonoBehaviour
     public void Death()
     {
         Debug.Log("You Died");
+        SceneManager.LoadScene(3); //should go to the death screen
     }
 }
